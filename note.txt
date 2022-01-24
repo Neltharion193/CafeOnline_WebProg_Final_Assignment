@@ -1,0 +1,8 @@
+step-step sebelum melakukan "php artisan serve":
+1. composer install 
+2. mengubah nama .env.example menjadi .env (nama database: cafeonline)
+3. php artisan cache:clear 
+4. composer dump-autoload 
+5. php artisan key:generate
+
+terdapat file cafeonline.sql bila ingin import ke MySql terkait seluruh data yang sudah diinput.
