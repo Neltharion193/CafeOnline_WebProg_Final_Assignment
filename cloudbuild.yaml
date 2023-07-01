@@ -1,7 +1,9 @@
 steps:
 # Build the container image
-- name: 'gcr.io/k8s-skaffold/pack:v0.11.2'
-  args: ['pack', 'build', 'test', '--builder=gcr.io/buildpacks/builder:latest']
+- name: gcr.io/k8s-skaffold/pack
+  entrypoint: pack
+  env:
+    - "TMPDIR=/builder/home/.pack"
 - name: 'gcr.io/cloud-builders/docker'
 #specify the name of the image
   args: ['build', '-t', 'gcr.io/$noted-flux-391501/cafeonline_webprog_final_assignment-main', '.']
