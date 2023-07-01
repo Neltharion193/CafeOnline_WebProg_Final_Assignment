@@ -1,6 +1,6 @@
 steps:
 # Build the container image
-- name: 'gcr.io/k8s-skaffold/pack'
+- name: 'gcr.io/k8s-skaffold/pack:v0.11.2'
   args: ['pack', 'build', 'test', '--builder=gcr.io/buildpacks/builder:latest']
 - name: 'gcr.io/cloud-builders/docker'
 #specify the name of the image
