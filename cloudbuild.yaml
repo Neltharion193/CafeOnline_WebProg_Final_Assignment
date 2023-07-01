@@ -2,16 +2,16 @@ steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
 #specify the name of the image
-  args: ['build', '-t', 'gcr.io/$noted-flux-391501/IMAGE', '.']
+  args: ['build', '-t', 'gcr.io/$noted-flux-391501/cafeonline-web', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$noted-flux-391501/IMAGE']
+  args: ['push', 'gcr.io/$noted-flux-391501/cafeonline-web']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
 #specify the service name and the region
-  args: ['run', 'deploy', 'cafeonline-web', '--image', 'gcr.io/$noted-flux-391501/IMAGE', '--region', 'asia-southeast2',         
+  args: ['run', 'deploy', 'cafeonline-web', '--image', 'gcr.io/$noted-flux-391501/cafeonline-web', '--region', 'asia-southeast2',         
         "--platform", "managed",
         "--port", "8080"]
 images:
-- gcr.io/$noted-flux-391501/IMAGE
+- gcr.io/$noted-flux-391501/cafeonline-web
