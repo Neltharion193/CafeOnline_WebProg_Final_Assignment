@@ -17,7 +17,7 @@ RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
 RUN docker-php-ext-install gd
 
 #000-default.conf is used to configure the web-server to listen to port 80 which Cloud run requires
-EXPOSE 80
+EXPOSE 8080
 COPY --from=build /app /var/www/
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN chmod 777 -R /var/www/storage/ && \

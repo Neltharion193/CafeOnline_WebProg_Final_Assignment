@@ -6,16 +6,16 @@ steps:
     - "TMPDIR=/builder/home/.pack"
 - name: 'gcr.io/cloud-builders/docker'
 #specify the name of the image
-  args: ['build', '-t', 'gcr.io/$noted-flux-391501/cafeonline_webprog_final_assignment-main-1', '.']
+  args: ['build', '-t', 'gcr.io/$noted-flux-391501/cafeonline-webprog-final-assignment', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$noted-flux-391501/cafeonline_webprog_final_assignment-main-1']
+  args: ['push', 'gcr.io/$noted-flux-391501/cafeonline-webprog-final-assignment']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
 #specify the service name and the region
-  args: ['run', 'deploy', 'cafeonline-web', '--image', 'gcr.io/$noted-flux-391501/cafeonline_webprog_final_assignment-main-1', '--region', 'asia-southeast2',         
+  args: ['run', 'deploy', 'cafeonline-web', '--image', 'gcr.io/$noted-flux-391501/cafeonline-webprog-final-assignment', '--region', 'asia-southeast2',         
         "--platform", "managed",
         "--port", "8080"]
 images:
-- gcr.io/$noted-flux-391501/cafeonline_webprog_final_assignment-main-1
+- gcr.io/$noted-flux-391501/cafeonline-webprog-final-assignment
