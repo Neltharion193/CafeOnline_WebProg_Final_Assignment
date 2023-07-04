@@ -1,17 +1,16 @@
-# FROM bitnami/laravel:10.0.4
-# COPY ./ /app/
+FROM bitnami/laravel:10.0.4
+COPY ./ /app/
 
-# RUN composer install
-# RUN php artisan key:generate
+RUN composer install
+RUN php artisan key:generate
 
 # Dockerfile
 #latest composer to get the dependencies
-
-FROM composer:2.3.10 as build
-WORKDIR /app
-COPY . /app
-RUN composer install && composer dumpautoload
-RUN php artisan optimize:clear
+# FROM composer:2.3.10 as build
+# WORKDIR /app
+# COPY . /app
+# RUN composer install && composer dumpautoload
+# RUN php artisan optimize:clear
 
 EXPOSE 8000
 CMD ["php", "artisan","serve", "--port=8000", "--host=0.0.0.0"]
