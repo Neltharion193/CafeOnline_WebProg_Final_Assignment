@@ -6,6 +6,7 @@
 
 # Dockerfile
 #latest composer to get the dependencies
+
 FROM composer:2.3.10 as build
 WORKDIR /app
 COPY . /app
